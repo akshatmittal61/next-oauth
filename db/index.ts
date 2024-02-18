@@ -1,4 +1,4 @@
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose from "mongoose";
 import { dbUri } from "@/config";
 
 const connection = {
@@ -11,12 +11,7 @@ const connectDB = async () => {
 	}
 
 	const db = await mongoose
-		.connect(dbUri, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-			useFindAndModify: false,
-			useCreateIndex: true,
-		} as ConnectOptions)
+		.connect(dbUri)
 		.then((db) => {
 			console.log("Connected to MongoDB");
 			return db;
