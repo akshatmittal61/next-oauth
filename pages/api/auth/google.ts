@@ -8,10 +8,10 @@ const handler = async (req: ApiRequest, res: ApiResponse) => {
 		await connectDB();
 		const { method } = req;
 		switch (method) {
-			case "GET":
+			case "POST":
 				return signInWithGoogle(req, res);
 			default:
-				res.setHeader("Allow", ["GET"]);
+				res.setHeader("Allow", ["POST"]);
 				return res.status(405).end(`Method ${method} Not Allowed`);
 		}
 	} catch (error) {

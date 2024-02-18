@@ -4,7 +4,6 @@ import React from "react";
 
 const LoginPage: React.FC = () => {
 	const { platform } = useDevice();
-	console.log(oauth);
 	return platform === "client" ? (
 		<main>
 			<h1>Login</h1>
@@ -30,18 +29,11 @@ const LoginPage: React.FC = () => {
 			></div>
 			<button
 				onClick={() => {
-					const randomNumber = Math.random()
-						.toString(36)
-						.substring(7);
-					const milliseconds = new Date().getTime();
-					const stateKey = `${randomNumber}-${milliseconds}`;
-					localStorage.setItem("oauth-state", stateKey);
 					const query = {
 						client_id: oauth.google.clientId,
 						redirect_uri: oauth.google.redirectUri,
 						response_type: "code",
 						scope: oauth.google.scopes.join(" "),
-						state: stateKey,
 					};
 					const url = new URL(oauth.google.endpoint);
 					url.search = new URLSearchParams(query).toString();

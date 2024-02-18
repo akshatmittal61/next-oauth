@@ -25,7 +25,7 @@ export const signInWithGoogle = async (req: ApiRequest, res: ApiResponse) => {
 			params: {
 				client_id: oauth.google.clientId,
 				client_secret: oauth.google.clientSecret,
-				code: req.query.code,
+				code: req.body.code,
 				grant_type: "authorization_code",
 				redirect_uri: oauth.google.redirectUri,
 			},
